@@ -6,23 +6,27 @@ using namespace std;
 
 class TodoItem {
 public:
-    TodoItem(const string& title) : title(title), completed(false) {}
+    TodoItem(const string& title) : title(title), status("Pending") {}
 
     void markCompleted() {
-        completed = true;
+        status = "Completed";
     }
 
     bool isCompleted() const {
-        return completed;
+        return status == "Completed";
     }
 
     const string& getTitle() const {
         return title;
     }
 
+    const string& getStatus() const {
+        return status;
+    }
+
 private:
     string title;
-    bool completed;
+    string status;
 };
 
 class TodoList {
@@ -41,7 +45,7 @@ public:
                 const TodoItem& item = items[i];
                 cout << "[" << (i + 1) << "] ";
                 cout << (item.isCompleted() ? "[X] " : "[ ] ");
-                cout << item.getTitle() << endl;
+                cout << "Title: " << item.getTitle() << " (Status: " << item.getStatus() << ")" << endl;
             }
         }
     }
@@ -81,7 +85,7 @@ int main() {
             case 1: {
                 string title;
                 cout << "Enter task title: ";
-                cin.ignore(); // Clear the newline character from the previous input
+                cin.ignore(); 
                 getline(cin, title);
                 todoList.addItem(title);
                 cout << "Task added successfully." << endl;
@@ -94,14 +98,14 @@ int main() {
                 int index;
                 cout << "Enter the task number to mark as completed: ";
                 cin >> index;
-                todoList.markCompleted(index - 1); // Adjust for 0-based indexing
+                todoList.markCompleted(index - 1); 
                 break;
             }
             case 4: {
                 int index;
                 cout << "Enter the task number to remove: ";
                 cin >> index;
-                todoList.removeItem(index - 1); // Adjust for 0-based indexing
+                todoList.removeItem(index - 1); 
                 cout << "Task removed successfully." << endl;
                 break;
             }
