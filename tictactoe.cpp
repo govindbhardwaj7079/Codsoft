@@ -149,11 +149,11 @@ cout<<n2<<" is player2 so he will play second"<<endl;
     }
     if(token =='X' && tie == false)
     {
-        cout<<n1<<"wins!!"<<endl;
+        cout<<n2<<"wins!!"<<endl;
     }
     else if(token =='0' && tie == false)
     {
-        cout<<n2<<"wins!!"<<endl;
+        cout<<n1<<"wins!!"<<endl;
     }
     else{
         cout<<" its is draw!"<<endl;
